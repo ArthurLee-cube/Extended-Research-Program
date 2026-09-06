@@ -1,4 +1,4 @@
-# Additional Materials: Bank Branch Closures and Neighbourhood Characteristics
+# Additional Materials
 
 ## 1. Purpose
 
@@ -10,34 +10,25 @@ The workflow combines England and Wales Census 2021 data, Scotland Census 2022 d
 
 ### Census data
 
-- **England and Wales Census 2021:** [Nomis bulk downloads](https://www.nomisweb.co.uk/sources/census_2021_bulk). Select LSOA-level data.
-- **Scotland Census 2022:** [Scotland's Census](https://www.scotlandscensus.gov.uk/) and the [2022 Data Zone topic tables](https://www.scotlandscensus.gov.uk/documents/2022-data-zone-area-data/). Select Data Zone (2022) geography.
+England and Wales Census 2021 data: https://www.nomisweb.co.uk/sources/census_2021_bulk
 
-Required topics are age, household deprivation dimensions, general health, disability, car or van availability, industry, National Statistics Socio-economic Classification (NS-SEC), highest level of qualification and economic activity status.
 
-**Preparation note:** Download the required Scottish topic tables or select the required categories through the census results service. The downloaded tables must be arranged into the nine Excel files expected by `data_matching_procedure.ipynb`. The notebook expects the worksheet `Data Sheet 0` and specific column labels. Downloading or renaming a file alone does not ensure that its structure matches the code. England and Wales inputs also use a mixture of long-format CSVs, wide-format CSVs and a prepared industry workbook; see Section 6.
+Warning: While downloading Scotland data, there is no direct download link for 2022 census data. Users need to build the datasets they require themselves.
+Scotland Census 2022 data: https://www.scotlandscensus.gov.uk/
+Census data need to download include: Age, Deprivation Dimensions, General Health, Disability, Car or van availability, Industry, NS-SeC, Highest level of qualification, Economic activity status
 
-### Bank-branch records
+### Bank branch status data 
+Geolytix bank-branch records: https://geolytix.com/blog/banking-building-societies-locations-2/
+https://geolytix.com/blog/tag/open-data/
+### Postcode lookup and Boundary Files
+Main portal for postcode to LSOA file and boundary file: https://geoportal.statistics.gov.uk/
+Postcode to LSOA lookup file: https://geoportal.statistics.gov.uk/datasets/9d8364ebae8b4439aa66cda440e54fc8/about
+Prepare a lookup with the fields `pcds` and `lsoa21cd`. In the prepared file, `lsoa21cd` must contain area identifiers consistent with the census inputs: 2021 LSOAs for England and Wales and 2022 Data Zones for Scotland.
 
-- [Geolytix banking and building society locations](https://geolytix.com/blog/banking-building-societies-locations-2/)
-- [Geolytix open-data articles](https://geolytix.com/blog/tag/open-data/)
+Boundary file:
+https://geoportal.statistics.gov.uk/datasets/ons::lower-layer-super-output-areas-december-2021-boundaries-ew-bfc-v10-2/about https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/f6656adf-b720-4612-ad5c-1d13eae94c8b
 
-Record the release version and download date. Later releases may contain revised records or additional closures, so they may not reproduce the submitted counts exactly.
 
-### Postcode lookup
-
-- [ONS Open Geography Portal](https://geoportal.statistics.gov.uk/)
-- [Postcode-to-LSOA lookup access page](https://geoportal.statistics.gov.uk/datasets/9d8364ebae8b4439aa66cda440e54fc8/about)
-
-Prepare a lookup with the fields `pcds` and `lsoa21cd`. In the prepared file, `lsoa21cd` must contain area identifiers consistent with the census inputs: 2021 LSOAs for England and Wales and 2022 Data Zones for Scotland. Check the geographic coverage and vintage of the downloaded lookup; an England and Wales lookup alone cannot match Scottish records.
-
-### Boundary files
-
-- **England and Wales:** [Lower Layer Super Output Areas December 2021 Boundaries](https://geoportal.statistics.gov.uk/datasets/ons::lower-layer-super-output-areas-december-2021-boundaries-ew-bfc-v10-2/about)
-- **Scotland:** [Data Zone Boundaries 2022 metadata](https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/f6656adf-b720-4612-ad5c-1d13eae94c8b)
-- **Scotland direct download:** [Data Zone Boundaries 2022 ZIP](https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneBdry_2022.zip)
-
-The mapping notebooks expect a combined Great Britain shapefile. Prepare it by aligning the two layers to the same coordinate reference system, standardising the geographic identifier as `area_code`, and combining the England and Wales LSOAs with the Scottish Data Zones. Save it as `spatial/GB_LSOA_DZ_2022.shp` with its companion files. This combined layer is a prepared input, not a single download from the ONS portal.
 
 ## 3. Run order
 
