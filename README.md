@@ -73,7 +73,7 @@ Directory: `data/raw/census_england_wales`
 | File | Topic |
 |---|---|
 | `census2021-ts007-lsoa-age 5 years.csv` | Age |
-| `census2021-ts011-lsoa-depreviation.csv` | Household deprivation dimensions |
+| `census2021-ts011-lsoa-deprivation.csv` | Household deprivation dimensions |
 | `census2021-ts037-lsoa-General Health.csv` | General health |
 | `census2021-ts038-lsoa-disability.csv` | Disability |
 | `census2021-ts045-lsoa-car.csv` | Car or van availability |
@@ -92,7 +92,7 @@ Prepare these nine Excel files for Data Zone (2022) geography:
 
 - `Data zone age S.xlsx`
 - `Data zone Car S.xlsx`
-- `Data zone depreviation S.xlsx`
+- `Data zone deprivation S.xlsx`
 - `Data zone disability S.xlsx`
 - `Data zone economic activity S.xlsx`
 - `Data zone education S.xlsx`
@@ -100,7 +100,7 @@ Prepare these nine Excel files for Data Zone (2022) geography:
 - `Data zone Industry S.xlsx`
 - `Data zone NS-SEC S.xlsx`
 
-Each file must contain a `Data Sheet 0` worksheet with the column labels read by the matching notebook. The spelling of the expected filenames, including `depreviation`, is retained for compatibility with the code.
+Each file must contain a `Data Sheet 0` worksheet with the column labels read by the matching notebook. The spelling of the expected filenames is retained for compatibility with the code.
 
 ### Geolytix bank records
 
@@ -118,9 +118,9 @@ Only the `pcds` and `lsoa21cd` fields are read by the matching notebook. Prepare
 
 Files: `spatial/GB_LSOA_DZ_2022.shp`, `.shx`, `.dbf`, `.prj` and `.cpg`
 
-Keep the shapefile and its companion files together. They form one combined plotting layer for England and Wales LSOAs and Scottish Data Zones. Do not rename or separate individual components. The layer is used only for mapping; TDABM distance is calculated from Census features, not polygon geometry.
+Keep the shapefile and its companion files together. They form one combined plotting layer for England and Wales LSOAs and Scottish Data Zones. Do not rename or separate individual components. The layer is used only for mapping; TDABM distance is calculated from Census features. The main boundary file was combined from two sub file for easier graph construction.
 
-## 7. Analytical levels and outcomes
+## 5. Analytical levels and outcomes
 
 The two datasets answer different questions.
 
@@ -129,7 +129,7 @@ The two datasets answer different questions.
 
 These labels should not be interchanged. `Complete withdrawal` and `retained provision` describe area-level banking histories. `Open` and `closed` describe individual branch records.
 
-## 8. TDABM feature space
+## 6. TDABM feature space
 
 The same 30 Census features define distance at both analytical levels:
 
@@ -144,7 +144,7 @@ The same 30 Census features define distance at both analytical levels:
 
 Each feature is standardised before Euclidean distance is calculated. Ball size records membership count, an edge records at least one shared observation, and colour records a node-level mean. Graph coordinates are layout coordinates and must not be interpreted as geographical locations or measured socio-economic distances.
 
-## 9. Saved outputs
+## 7. Saved outputs
 
 - `results/figures` contains report figures, the complete Census-coloured Ball Mapper series, epsilon scans, selected-ball profiles and robustness plots.
 - `results/eda_tables` contains descriptive and country/status summaries produced by notebooks 01 and 03.
