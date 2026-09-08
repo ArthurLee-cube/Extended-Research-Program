@@ -41,15 +41,14 @@ Reads all Census, bank and postcode files from 'data/raw' and 'data/reference'. 
 'data/processed/eda_area_level.csv'
 'data/processed/eda_bank_level.csv'
 
-The source versions used for the report produced 43,064 area rows and 11,564 matched branch rows. Updated source releases may produce different counts. The area file should contain one row per area code. The branch file should contain one row per bank-record identifier.
-
 ### Step 2: `notebooks/01_area_level_EDA.ipynb`
 
-Reads both processed CSV files, constructs percentages and area-level bank-status measures, writes descriptive tables to `results/eda_tables`, and writes area-level distributions and maps to `results/figures`. The prepared combined boundary file is read from `spatial`.
+Reads both processed CSV files, constructs percentages and area-level bank-status measures, writes descriptive tables to `results/eda_tables`, and writes area-level distributions and maps to `results/figures`. To combine the two shape file by running the last block of the notebook file. The prepared combined boundary file is read from `spatial`.
 
 ### Step 3: `notebooks/02_area_level_TDABM_robustness_pyballmapper.ipynb`
 
-Builds the area-level neighbourhood-characteristics space from 30 Census features. Banking outcomes are used for colouring and do not determine distance or ball membership. The main manually selected radius is 7.2, and the baseline landmark seed is 42. The notebook also contains reduced-variable and expanded-variable checks, followed by a 50% majority-rule landmark-order check. The 10,000-seed procedure is computationally expensive and may require several hours depending on hardware.
+Builds the area-level neighbourhood-characteristics space from 30 Census features. Banking outcomes are used for colouring and do not determine distance or ball membership. The main manually selected radius is 7.2, and the baseline landmark seed is 42. The notebook also contains reduced-variable and expanded-variable checks, followed by a landmark-order check. The 10,000-seed procedure is computationally expensive and may require several hours depending on hardware. 
+Warning 
 
 ### Step 4: `notebooks/03_bank_level_EDA.ipynb`
 
@@ -57,15 +56,15 @@ Produces branch-record descriptive tables, distributions and maps. Open, closed 
 
 ### Step 5: `notebooks/04_bank_level_TDABM_robustness_pyballmapper.ipynb`
 
-Builds the branch-level neighbourhood-characteristics space from the same 30 Census features. The main manually selected radius is 7.0, and the baseline landmark seed is 42. It repeats the reduced-variable, expanded-variable and 50% majority-rule landmark-order checks used in the area analysis.
+Builds the branch-level neighbourhood-characteristics space from the same 30 Census features. The main manually selected radius is 7.0, and the baseline landmark seed is 42. It repeats the reduced-variable, expanded-variable and landmark-order checks used in the area analysis.
 
 ### Step 6: `notebooks/tdabm_method_appendix_figures.ipynb`
 
-Generates the synthetic diagrams used to explain greedy cover construction, conversion of the overlapping cover into a graph, and the effect of changing epsilon. It does not use the empirical Census or branch records and may be run independently.
+Generates the synthetic diagrams used to explain TDABM method and graph construction. Explain the effect of changing epsilon. It does not use the empirical Census or branch records and may be run independently.
 
 Notebooks can be opened from either the package root or the `notebooks` directory. All paths are resolved relative to the package root. No code refers to the author's original `C:\Users\...` location.
 
-## 6. Required input files
+## 4. Required input files
 
 ### England and Wales Census 2021
 
