@@ -10,24 +10,22 @@ The workflow combines England and Wales Census 2021 data, Scotland Census 2022 d
 
 ### Census data
 
-England and Wales Census 2021 data: https://www.nomisweb.co.uk/sources/census_2021_bulk
-
-
-Warning: While downloading Scotland data, there is no direct download link for 2022 census data. Users need to build the datasets they require themselves.
-Scotland Census 2022 data: https://www.scotlandscensus.gov.uk/
-Census data need to download include: Age, Deprivation Dimensions, General Health, Disability, Car or van availability, Industry, NS-SeC, Highest level of qualification, Economic activity status
+Census data describe the social and economic characteristics of the neighbourhoods in which bank branches are located. This study uses the 2021 Census for England and Wales at LSOA level and the 2022 Census for Scotland at Data Zone level.
+The required topics are age, household deprivation, general health, disability, car or van availability, industry, National Statistics Socio-economic Classification (NS-SEC), qualifications and economic activity. These variables provide the neighbourhood profiles used in the area-level and branch-level analyses.
+England and Wales data are available through [Nomis Census 2021 downloads](https://www.nomisweb.co.uk/sources/census_2021_bulk). Scottish data can be obtained through [Scotland’s Census](https://www.scotlandscensus.gov.uk/webapi/jsf/dataCatalogueExplorer.xhtml). Select the relevant topics and geographical units, then prepare the downloaded tables in the formats specified in the data matching notebook.
 
 ### Bank branch status data 
-Geolytix bank-branch records: https://geolytix.com/blog/banking-building-societies-locations-2/
-https://geolytix.com/blog/tag/open-data/
+Geolytix records provide information on branch locations and operating status. The analysis links these records to census areas to compare open and closed branches and identify areas with no remaining recorded open branch.
+Data access information is available through the [Geolytix banking page](https://geolytix.com/blog/banking-building-societies-locations-2/) and its [open-data websties](https://geolytix.com/blog/tag/open-data/
+). Record the release version and download date, as later updates may change the branch records and resulting counts.
+
 ### Postcode lookup and Boundary Files
-Main portal for postcode to LSOA file and boundary file: https://geoportal.statistics.gov.uk/
-Postcode to LSOA lookup file: https://geoportal.statistics.gov.uk/datasets/9d8364ebae8b4439aa66cda440e54fc8/about
-Prepare a lookup with the fields `pcds` and `lsoa21cd`. In the prepared file, `lsoa21cd` must contain area identifiers consistent with the census inputs: 2021 LSOAs for England and Wales and 2022 Data Zones for Scotland.
 
-Boundary file:
-https://geoportal.statistics.gov.uk/datasets/ons::lower-layer-super-output-areas-december-2021-boundaries-ew-bfc-v10-2/about https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/f6656adf-b720-4612-ad5c-1d13eae94c8b
+Postcode lookup data assign each bank branch to its corresponding LSOA or Data Zone. The prepared lookup must contain pcds for the postcode and lsoa21cd for the small-area identifier. The latter is a common field name used by the code: it should contain 2021 LSOA codes for England and Wales and 2022 Data Zone codes for Scotland.
 
+The [ONS Open Geography Portal](https://geoportal.statistics.gov.uk/) provides access to geographical lookup products, including the [postcode lookup access page](https://geoportal.statistics.gov.uk/datasets/9d8364ebae8b4439aa66cda440e54fc8/about). Check that the lookup covers the required countries and uses geographical identifiers consistent with the census inputs.
+
+Boundary files provide the polygons used to map banking outcomes. The study combines [England and Wales 2021 LSOA boundaries](https://geoportal.statistics.gov.uk/datasets/ons::lower-layer-super-output-areas-december-2021-boundaries-ew-bfc-v10-2/about) with [Scotland 2022 Data Zone boundaries](https://spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/f6656adf-b720-4612-ad5c-1d13eae94c8b). Both layers are aligned to the same coordinate reference system and their area-code fields are standardised before being combined into a Great Britain boundary layer.
 
 
 ## 3. Run order
