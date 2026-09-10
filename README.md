@@ -10,7 +10,7 @@ The workflow combines England and Wales Census 2021 data, Scotland Census 2022 d
 
 ### Census data
 
-Census data describe the social and economic characteristics of the neighbourhoods in which bank branches are located. This study uses the 2021 Census for England and Wales at LSOA level and the 2022 Census for Scotland at Data Zone level.
+Census data describe the social and economic characteristics of the neighbourhoods in which bank branches are located. This study uses the `2021 Census for England and Wales at LSOA level` and the `2022 Census for Scotland at Data Zone level`.
 The required topics are age, household deprivation, general health, disability, car or van availability, industry, National Statistics Socio-economic Classification (NS-SEC), qualifications and economic activity. These variables provide the neighbourhood profiles used in the area-level and branch-level analyses.
 England and Wales data are available through [Nomis Census 2021 downloads](https://www.nomisweb.co.uk/sources/census_2021_bulk). Scottish data can be obtained through [Scotland’s Census](https://www.scotlandscensus.gov.uk/webapi/jsf/dataCatalogueExplorer.xhtml). Select the relevant topics and geographical units, then prepare the downloaded tables in the formats specified in the data matching notebook.
 
@@ -21,7 +21,7 @@ Data access information is available through the [Geolytix banking page](https:/
 
 ### Postcode lookup and Boundary Files
 
-Postcode lookup data assign each bank branch to its corresponding LSOA or Data Zone. The prepared lookup must contain pcds for the postcode and lsoa21cd for the small-area identifier. The latter is a common field name used by the code: it should contain 2021 LSOA codes for England and Wales and 2022 Data Zone codes for Scotland.
+Postcode lookup data assign each bank branch to its corresponding LSOA or Data Zone. The prepared lookup must contain pcds for the postcode and lsoa21cd for the small-area identifier. The latter is a common field name used by the code: it should contain `2021 LSOA codes for England and Wales` and `2022 Data Zone codes for Scotland`.
 
 The [ONS Open Geography Portal](https://geoportal.statistics.gov.uk/) provides access to geographical lookup products, including the [postcode lookup access page](https://geoportal.statistics.gov.uk/datasets/9d8364ebae8b4439aa66cda440e54fc8/about). Check that the lookup covers the required countries and uses geographical identifiers consistent with the census inputs.
 
@@ -30,14 +30,14 @@ Boundary files provide the polygons used to map banking outcomes. The study comb
 
 ## 3. Run order
 
-Before running the notebooks, download and prepare the data listed in Sections 2 and 6, create the required directories. Open Jupyter from the package root and run the notebooks in the order below.
+Before running the notebooks, download and prepare the data listed in Sections 2 and 4, create the required directories. Open Jupyter from the package root and run the notebooks in the order below.
 
-### Step 1: data matching and cleaning.ipynb
+### Step 1: `data matching and cleaning.ipynb`
 
-Reads all Census, bank and postcode files from 'data/raw' and 'data/reference'. It standardises area identifiers, reshapes the Census source tables, checks each area merges, attaches bank records to their located small areas:
+Reads all Census, bank and postcode files from `data/raw` and `data/reference`. It standardises area identifiers, reshapes the Census source tables, checks each area merges, attaches bank records to their located small areas:
 
-'data/processed/eda_area_level.csv'
-'data/processed/eda_bank_level.csv'
+`data/processed/eda_area_level.csv`
+`data/processed/eda_bank_level.csv`
 
 ### Step 2: `notebooks/01_area_level_EDA.ipynb`
 
@@ -114,7 +114,7 @@ Only the `pcds` and `lsoa21cd` fields are read by the matching notebook. Prepare
 
 ### Spatial boundary
 
-Files: 'spatial/GB_LSOA_DZ_2022.shp', '.shx', '.dbf', '.prj' and '.cpg'
+Files: `spatial/GB_LSOA_DZ_2022.shp`, `.shx`, `.dbf`, `.prj` and `.cpg`
 
 Keep the shapefile and its companion files together. They form one combined plotting layer for England and Wales LSOAs and Scottish Data Zones. Do not rename or separate individual components. The layer is used only for mapping; TDABM distance is calculated from Census features. The main boundary file was combined from two sub file for easier graph construction.
 
@@ -122,10 +122,10 @@ Keep the shapefile and its companion files together. They form one combined plot
 
 The two datasets answer different questions.
 
-- **Area level:** one observation is an LSOA in England or Wales or a Data Zone in Scotland. Among previously observed banking areas, 'complete withdrawal' indicates closed records without a remaining open record, while 'retained provision' indicates that at least one open record remains.
-- **Branch level:** one observation is a matched bank record. The principal comparison is between records labelled 'Open' and 'Closed'. A closed branch does not necessarily imply complete withdrawal from its host area because another branch may remain there.
+- **Area level:** one observation is an LSOA in England or Wales or a Data Zone in Scotland. Among previously observed banking areas, `complete withdrawal` indicates closed records without a remaining open record, while `retained provision` indicates that at least one open record remains.
+- **Branch level:** one observation is a matched bank record. The principal comparison is between records labelled `Open` and `Closed`. A closed branch does not necessarily imply complete withdrawal from its host area because another branch may remain there.
 
-These labels should not be interchanged. 'Complete withdrawal' and 'retained provision' describe area-level banking histories. 'Open' and 'closed' describe individual branch records.
+These labels should not be interchanged. `Complete withdrawal` and `retained provision` describe area-level banking histories. `Open` and `closed` describe individual branch records.
 
 ## 6. TDABM feature space
 
@@ -144,9 +144,9 @@ Each feature is standardised before Euclidean distance is calculated. Ball size 
 
 ## 7. Saved outputs
 
-- 'results/figures' contains report figures, the complete Census-coloured Ball Mapper series, epsilon scans, selected-ball profiles and robustness plots.
-- 'results/eda_tables' contains descriptive and country/status summaries produced by notebooks 01 and 03.
-- 'results/tdabm_tables' contains feature definitions, epsilon-selection results, ball summaries, selected-ball extracts and 50% majority-rule landmark-order robustness outputs.
+- `results/figures` contains report figures, the complete Census-coloured Ball Mapper series, epsilon scans, selected-ball profiles and robustness plots.
+- `results/eda_tables` contains descriptive and country/status summaries produced by notebooks 01 and 03.
+- `results/tdabm_tables` contains feature definitions, epsilon-selection results, ball summaries, selected-ball extracts and 50% majority-rule landmark-order robustness outputs.
 
 These directories receive outputs when the notebooks are run. Any saved figures or tables retained in the submission provide reference results; they do not replace the required input datasets.
 
