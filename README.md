@@ -114,7 +114,7 @@ Only the `pcds` and `lsoa21cd` fields are read by the matching notebook. Prepare
 
 ### Spatial boundary
 
-Files: `spatial/GB_LSOA_DZ_2022.shp`, `.shx`, `.dbf`, `.prj` and `.cpg`
+Files: 'spatial/GB_LSOA_DZ_2022.shp', '.shx', '.dbf', '.prj' and '.cpg'
 
 Keep the shapefile and its companion files together. They form one combined plotting layer for England and Wales LSOAs and Scottish Data Zones. Do not rename or separate individual components. The layer is used only for mapping; TDABM distance is calculated from Census features. The main boundary file was combined from two sub file for easier graph construction.
 
@@ -122,10 +122,10 @@ Keep the shapefile and its companion files together. They form one combined plot
 
 The two datasets answer different questions.
 
-- **Area level:** one observation is an LSOA in England or Wales or a Data Zone in Scotland. Among previously observed banking areas, `complete withdrawal` indicates closed records without a remaining open record, while `retained provision` indicates that at least one open record remains.
-- **Branch level:** one observation is a matched bank record. The principal comparison is between records labelled `Open` and `Closed`. A closed branch does not necessarily imply complete withdrawal from its host area because another branch may remain there.
+- **Area level:** one observation is an LSOA in England or Wales or a Data Zone in Scotland. Among previously observed banking areas, 'complete withdrawal' indicates closed records without a remaining open record, while 'retained provision' indicates that at least one open record remains.
+- **Branch level:** one observation is a matched bank record. The principal comparison is between records labelled 'Open' and 'Closed'. A closed branch does not necessarily imply complete withdrawal from its host area because another branch may remain there.
 
-These labels should not be interchanged. `Complete withdrawal` and `retained provision` describe area-level banking histories. `Open` and `closed` describe individual branch records.
+These labels should not be interchanged. 'Complete withdrawal' and 'retained provision' describe area-level banking histories. 'Open' and 'closed' describe individual branch records.
 
 ## 6. TDABM feature space
 
@@ -144,9 +144,9 @@ Each feature is standardised before Euclidean distance is calculated. Ball size 
 
 ## 7. Saved outputs
 
-- `results/figures` contains report figures, the complete Census-coloured Ball Mapper series, epsilon scans, selected-ball profiles and robustness plots.
-- `results/eda_tables` contains descriptive and country/status summaries produced by notebooks 01 and 03.
-- `results/tdabm_tables` contains feature definitions, epsilon-selection results, ball summaries, selected-ball extracts and 50% majority-rule landmark-order robustness outputs.
+- 'results/figures' contains report figures, the complete Census-coloured Ball Mapper series, epsilon scans, selected-ball profiles and robustness plots.
+- 'results/eda_tables' contains descriptive and country/status summaries produced by notebooks 01 and 03.
+- 'results/tdabm_tables' contains feature definitions, epsilon-selection results, ball summaries, selected-ball extracts and 50% majority-rule landmark-order robustness outputs.
 
 These directories receive outputs when the notebooks are run. Any saved figures or tables retained in the submission provide reference results; they do not replace the required input datasets.
 
