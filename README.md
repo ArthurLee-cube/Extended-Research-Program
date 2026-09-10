@@ -2,26 +2,26 @@
 
 ## 1. Purpose
 
-This folder provides data access and preparation instructions and the code for reproducing the reported area-level and branch-level TDABM analyses. The complete datasets are not distributed with the submission. Users should obtain the required inputs from the sources below and prepare them in the formats expected by the notebooks.
+This folder provides data access and preparation instructions and the code for reproducing the reported area-level and branch-level TDABM analyses. Users should obtain the required inputs from the sources below and prepare them in the formats expected by the notebooks.
 
-The workflow combines England and Wales Census 2021 data, Scotland Census 2022 data, Geolytix bank-branch records, a postcode-to-small-area lookup and a combined Great Britain boundary file. It produces two analytical CSV files, exploratory analyses, maps, Ball Mapper graphs and robustness checks.
+The workflow combines England and Wales Census 2021 data, Scotland Census 2022 data, Geolytix bank-branch records, a postcode to small area lookup file and a combined Great Britain boundary file. Final outputs contain two analytical CSV files, exploratory analyses, maps, Ball Mapper graphs and robustness checks.
 
 ## 2. Data Sources and Websites
 
 ### Census data
 
-Census data describe the social and economic characteristics of the neighbourhoods in which bank branches are located. This study uses the `2021 Census for England and Wales at LSOA level` and the `2022 Census for Scotland at Data Zone level`.
-The required topics are age, household deprivation, general health, disability, car or van availability, industry, National Statistics Socio-economic Classification (NS-SEC), qualifications and economic activity. These variables provide the neighbourhood profiles used in the area-level and branch-level analyses.
+Census data describe the social and economic characteristics of the neighbourhoods in which bank branches are located. Census data input in theThis study uses the `2021 Census for England and Wales at LSOA level` and the `2022 Census for Scotland at Data Zone level`.
+Required topics are including age, household deprivation, general health, disability, car or van availability, industry, National Statistics Socio-economic Classification (NS-SEC), qualifications and economic activity. 
 England and Wales data are available through [Nomis Census 2021 downloads](https://www.nomisweb.co.uk/sources/census_2021_bulk). Scottish data can be obtained through [Scotland’s Census](https://www.scotlandscensus.gov.uk/webapi/jsf/dataCatalogueExplorer.xhtml). Select the relevant topics and geographical units, then prepare the downloaded tables in the formats specified in the data matching notebook.
 
 ### Bank branch status data 
-Geolytix records provide information on branch locations and operating status. The analysis links these records to census areas to compare open and closed branches and identify areas with no remaining recorded open branch.
-Data access information is available through the [Geolytix banking page](https://geolytix.com/blog/banking-building-societies-locations-2/) and its [open-data websties](https://geolytix.com/blog/tag/open-data/
+Geolytix records provide information on branch locations and operating status. Both area level and branch level analysis will link the bank status to census census to compare `open` and `closed` branches and identify areas with `complete withdrawal` and retained provision.
+Data access information is available through the [Geolytix banking page](https://geolytix.com/blog/banking-building-societies-locations-2/) and [open data main portal](https://geolytix.com/blog/tag/open-data/
 ). Record the release version and download date, as later updates may change the branch records and resulting counts.
 
 ### Postcode lookup and Boundary Files
 
-Postcode lookup data assign each bank branch to its corresponding LSOA or Data Zone. The prepared lookup must contain pcds for the postcode and lsoa21cd for the small-area identifier. The latter is a common field name used by the code: it should contain `2021 LSOA codes for England and Wales` and `2022 Data Zone codes for Scotland`.
+Postcode lookup data assign each bank branch to its corresponding LSOA or Data Zone. Lookup file must contain pcds for the postcode and lsoa21cd while downloading the file. The latter Lsoa21cd is a field name which should contain `2021 LSOA codes for England and Wales` and `2022 Data Zone codes for Scotland`.
 
 The [ONS Open Geography Portal](https://geoportal.statistics.gov.uk/) provides access to geographical lookup products, including the [postcode lookup access page](https://geoportal.statistics.gov.uk/datasets/9d8364ebae8b4439aa66cda440e54fc8/about). Check that the lookup covers the required countries and uses geographical identifiers consistent with the census inputs.
 
