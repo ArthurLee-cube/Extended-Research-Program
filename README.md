@@ -112,41 +112,39 @@ File: `data/reference/postcode_lookup/Prepared pcd to lsoa.csv`
 
 Only the `pcds` and `lsoa21cd` fields are read by the matching notebook. Prepare these fields using the geographic definitions described in Section 2. A downloaded lookup may need additional Scottish matching or geographic harmonisation before it can serve as this input.
 
-### Spatial boundary
+### Map boundary
 
 Files: `spatial/GB_LSOA_DZ_2022.shp`, `.shx`, `.dbf`, `.prj` and `.cpg`
 
-Keep the shapefile and its companion files together. They form one combined plotting layer for England and Wales LSOAs and Scottish Data Zones. Do not rename or separate individual components. The layer is used only for mapping; TDABM distance is calculated from Census features. The main boundary file was combined from two sub file for easier graph construction.
+Keep the shapefile and its companion files in same directory folder. They form one combined plotting layer for England and Wales LSOAs and Scottish Data Zones. Shapefile is used only for mapping. TDABM distance is calculated from Census features. The main boundary file was combined from two sub file for easier graph construction.
 
 ## 5. Analytical levels and outcomes
-
-The two datasets answer different questions.
 
 - **Area level:** one observation is an LSOA in England or Wales or a Data Zone in Scotland. Among previously observed banking areas, `complete withdrawal` indicates closed records without a remaining open record, while `retained provision` indicates that at least one open record remains.
 - **Branch level:** one observation is a matched bank record. The principal comparison is between records labelled `Open` and `Closed`. A closed branch does not necessarily imply complete withdrawal from its host area because another branch may remain there.
 
-These labels should not be interchanged. `Complete withdrawal` and `retained provision` describe area-level banking histories. `Open` and `closed` describe individual branch records.
+`Complete withdrawal` and `retained provision` can only be used in describing area-level banking status. `Open` and `closed` are used in describing individual branch records.
 
 ## 6. TDABM feature space
 
 The same 30 Census features define distance at both analytical levels:
 
-- age: 0--15, 16--24, 25--64 and 65-plus;
-- household deprivation: zero, one and two-or-more dimensions;
-- car availability: zero, one and two-or-more cars;
+- age: 0-15, 16-24, 25-64 and 65 plus;
+- household deprivation: zero, one and two or more dimensions;
+- car availability: zero, one and two or more cars;
 - health and disability: very good health, good health, other health and disability;
 - qualifications: low, middle and higher groups;
 - NS-SEC: managerial/professional/small-employer, intermediate/lower-supervisory, semi-routine/routine, and never-worked/long-term-unemployed groups;
 - economic activity: employed, unemployed, retired, long-term sick or disabled, and other inactive groups;
 - industry: production, distribution/transport, finance/real-estate/professional/administrative, and public/other services.
 
-Each feature is standardised before Euclidean distance is calculated. Ball size records membership count, an edge records at least one shared observation, and colour records a node-level mean. Graph coordinates are layout coordinates and must not be interpreted as geographical locations or measured socio-economic distances.
+Each feature is standardised before Euclidean distance is calculated. Ball size directly shows observations in balls. Edges records shared observation between two balls. Colour records a node-level mean. 
 
 ## 7. Saved outputs
 
-- `results/figures` contains report figures, the complete Census-coloured Ball Mapper series, epsilon scans, selected-ball profiles and robustness plots.
+- `results/figures` contains all figures, Ball Mapper graphs, epsilon scans, and robustness plots.
 - `results/eda_tables` contains descriptive and country/status summaries produced by notebooks 01 and 03.
-- `results/tdabm_tables` contains feature definitions, epsilon-selection results, ball summaries, selected-ball extracts and 50% majority-rule landmark-order robustness outputs.
+- `results/tdabm_tables` contains epsilon selection results, ball summaries, selected ball details and landmark robustness outputs.
 
 These directories receive outputs when the notebooks are run. Any saved figures or tables retained in the submission provide reference results; they do not replace the required input datasets.
 
